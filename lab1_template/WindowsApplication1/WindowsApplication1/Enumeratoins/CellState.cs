@@ -12,6 +12,7 @@ namespace WindowsApplication1
         Green,
         Immature,
         Mature,
-        Overgrow
+        Overgrow,
+        Carrot
     }
 }

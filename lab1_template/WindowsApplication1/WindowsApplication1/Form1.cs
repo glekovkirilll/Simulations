@@ -14,6 +14,7 @@ namespace WindowsApplication1
 
         public int money = 100;
         public int day = 1;
+        public int count = 0;
 
         public Form1()
         {
@@ -51,14 +52,58 @@ namespace WindowsApplication1
             moneyBox.Text = money.ToString();
         }
 
+        static Image CarrotImage = Image.FromFile(@"C:\Users\Kirill\Desktop\FarmCasino\carrot.png");
+        static Image WheatImage = Image.FromFile(@"C:\Users\Kirill\Desktop\FarmCasino\wheatStack.png");
+        Bitmap Carrot64 = new Bitmap(CarrotImage, new Size(50, 50));
+        Bitmap Carrot256 = new Bitmap(CarrotImage, new Size(200, 200));
+        Bitmap Wheat256 = new Bitmap(CarrotImage, new Size(200, 200));
+
+
         private void Harvest(CheckBox cb)
         {
+            /*
             if (field[cb].state == CellState.Immature)
                 money += 3;                
             else if (field[cb].state == CellState.Mature)
                 money += 5;
             else if (field[cb].state == CellState.Overgrow)
                 money--;
+            */
+
+            if (field[cb].state == CellState.Mature)
+            {
+                LastGet.InitialImage = null;
+                LastGet.BackgroundImage = Wheat256;                
+            }
+            else if (field[cb].state == CellState.Carrot && count == 0)
+            {
+                LastGet.InitialImage = null;
+                Score1.BackgroundImage = Carrot64;
+                LastGet.BackgroundImage = Carrot256;
+                count++;
+                
+            }
+            else if (field[cb].state == CellState.Carrot && count == 1)
+            {
+                LastGet.InitialImage = null;
+                Score2.BackgroundImage = Carrot64;
+                LastGet.BackgroundImage = Carrot256;
+                count++;
+            }
+            else if (field[cb].state == CellState.Carrot && count == 2)
+            {
+                LastGet.InitialImage = null;
+                Score3.BackgroundImage = Carrot64;
+                LastGet.BackgroundImage = Carrot256;
+                count++;
+            }
+
+            if (count == 3)
+            {
+                money *= 10;
+            }
+            else 
+                timer1.Stop();
 
             field[cb].Harvest();
                       
@@ -76,7 +121,7 @@ namespace WindowsApplication1
 
         private void UpdateBox(CheckBox cb)
         {
-            Color c = Color.White;
+            /*Color c = Color.White;
             switch (field[cb].state)
             {
                 case CellState.Planted: c = Color.Gray;
@@ -89,8 +134,38 @@ namespace WindowsApplication1
                     break;
                 case CellState.Overgrow: c = Color.Chocolate;
                     break;
+            }*/
+            cb.BackgroundImage = Image.FromFile(@"C:\Users\Kirill\Desktop\FarmCasino\dirt.png");
+            cb.Size = cb.BackgroundImage.Size;
+
+            switch (field[cb].state)
+            {
+                case CellState.Planted:
+                    cb.BackgroundImage = Image.FromFile(@"C:\Users\Kirill\Desktop\FarmCasino\planted.png");
+                    cb.Size = cb.BackgroundImage.Size;
+                    break;
+                case CellState.Green:
+                    cb.BackgroundImage = Image.FromFile(@"C:\Users\Kirill\Desktop\FarmCasino\green.png");
+                    cb.Size = cb.BackgroundImage.Size;
+                    break;
+                case CellState.Immature:
+                    cb.BackgroundImage = Image.FromFile(@"C:\Users\Kirill\Desktop\FarmCasino\rostok.png");
+                    cb.Size = cb.BackgroundImage.Size;
+                    break;
+                case CellState.Mature:
+                    cb.BackgroundImage = Image.FromFile(@"C:\Users\Kirill\Desktop\FarmCasino\wheat.png");
+                    cb.Size = cb.BackgroundImage.Size;
+                    break;
+                case CellState.Carrot:
+                    cb.BackgroundImage = Image.FromFile(@"C:\Users\Kirill\Desktop\FarmCasino\carrrot.png");
+                    cb.Size = cb.BackgroundImage.Size;
+                    break;
+                case CellState.Overgrow:
+                    cb.BackgroundImage = Image.FromFile(@"C:\Users\Kirill\Desktop\FarmCasino\tnt.png");
+                    cb.Size = cb.BackgroundImage.Size;
+                    break;
             }
-            cb.BackColor = c;
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -101,6 +176,11 @@ namespace WindowsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
             timeMultiplyer.Value = 1;
+        }
+
+        private void checkBox15_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

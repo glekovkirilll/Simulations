@@ -1,0 +1,10 @@
+C:\Users\smois\source\repos\CurRate\bin\Debug\CurRate.exe.config
+C:\Users\smois\source\repos\CurRate\bin\Debug\CurRate.exe
+C:\Users\smois\source\repos\CurRate\bin\Debug\CurRate.pdb
+C:\Users\smois\source\repos\CurRate\obj\Debug\CurRate.csprojAssemblyReference.cache
+C:\Users\smois\source\repos\CurRate\obj\Debug\CurRate.Form1.resources
+C:\Users\smois\source\repos\CurRate\obj\Debug\CurRate.Properties.Resources.resources
+C:\Users\smois\source\repos\CurRate\obj\Debug\CurRate.csproj.GenerateResource.cache
+C:\Users\smois\source\repos\CurRate\obj\Debug\CurRate.csproj.CoreCompileInputs.cache
+C:\Users\smois\source\repos\CurRate\obj\Debug\CurRate.exe
+C:\Users\smois\source\repos\CurRate\obj\Debug\CurRate.pdb

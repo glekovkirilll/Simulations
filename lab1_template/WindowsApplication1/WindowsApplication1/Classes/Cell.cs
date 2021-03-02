@@ -7,13 +7,19 @@ namespace WindowsApplication1
 {
     class Cell
     {
+        static Random random = new Random();
         public CellState state = CellState.Empty;
         public int progress = 0;
+        public int chance = random.Next(17);
+        public int carrot = 0;
+
+
 
         private const int prPlanted = 20;
         private const int prGreen = 100;
         private const int prImmature = 120;
-        private const int prMature = 140;
+        //private int prMature = random.Next(185, 231);
+        private const int prMature = 145;
 
         public void Plant()
         {
@@ -34,8 +40,13 @@ namespace WindowsApplication1
                 progress++;
                 if (progress < prPlanted) state = CellState.Planted;
                 else if (progress < prGreen) state = CellState.Green;
-                else if (progress < prImmature) state = CellState.Immature;
-                else if (progress < prMature) state = CellState.Mature;
+                else if (progress < prImmature) state = CellState.Immature;                
+                else if (progress < prMature && chance < 10 && carrot <= 2)
+                {
+                    state = CellState.Carrot;
+                    carrot++;
+                }
+                else if (progress < prMature && chance >= 10) state = CellState.Mature;
                 else state = CellState.Overgrow;
             }
         }
